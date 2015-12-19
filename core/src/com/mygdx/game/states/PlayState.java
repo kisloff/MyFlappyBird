@@ -1,6 +1,7 @@
 package com.mygdx.game.states;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -102,6 +103,10 @@ public class PlayState extends State {
         if(bird.getPosition().y <= ground.getHeight() + GROUND_Y_OFFSET){
             //gsm.set(new PlayState(gsm)); //в случае столкновения игра перезапускается == создается новое игровое состояние
             gsm.set(new GameOverState(gsm));
+        }
+
+        if (Gdx.input.isKeyPressed(Input.Keys.BACK)){
+            Util.score = 0;
         }
         cam.update();
     }
